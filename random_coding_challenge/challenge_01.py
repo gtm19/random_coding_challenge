@@ -14,7 +14,11 @@ def challenge_01(number: int) -> int:
     """
     threes = range(3, number, 3)
     fives = range(5, number , 5)
-    return sum(threes) + sum(fives)
+    
+    # elements of a set are unique, so this ensures that
+    # multiples of 3 _and_ 5 are not double counted
+    without_dupes = set(list(threes) + list(fives))
+    return sum(without_dupes)
 
 if __name__ == "__main__":
     NUMBER = 1000
