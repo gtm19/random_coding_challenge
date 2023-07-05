@@ -2,6 +2,7 @@
 # The sum of these multiples is 23.
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
+
 def challenge_01(number: int) -> int:
     """
     Calculates the sum of all multiples of 3 and 5 less than a given number
@@ -13,14 +14,15 @@ def challenge_01(number: int) -> int:
         int: The sum of all multiples of 3 and 5 less than `number`
     """
     threes = range(3, number, 3)
-    fives = range(5, number , 5)
+    fives = range(5, number, 5)
 
     # elements of a set are unique, so this ensures that
     # multiples of 3 _and_ 5 are not double counted
     without_dupes = set(list(threes) + list(fives))
     return sum(without_dupes)
 
+
 if __name__ == "__main__":
     NUMBER = 1000
     print(f"The answer for challenge 1 where {NUMBER=} is:")
-    print(challenge_01(NUMBER))
+    print(f"{challenge_01(NUMBER):,}")
