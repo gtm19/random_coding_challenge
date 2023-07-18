@@ -9,6 +9,7 @@ packages = [{include = "random_coding_challenge"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 numpy = "^1.25.0"
+requests = "^2.31.0"
 
 
 [tool.poetry.group.dev.dependencies]
