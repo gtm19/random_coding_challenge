@@ -19,9 +19,21 @@ def get_beer(id=None):
         raise RuntimeError(json["message"])
     json = json[0]
 
+    # Loopy way 1
     # return_data = {}
     # for key in ["name", "abv"]:
     #     return_data[key] = json[key]
     # return return_data
+
+    # Loopy way 2
+    # return_data = {}
+    # for key in json:
+    #     if key in ["name", "abv"]:
+    #         return_data[key] = json[key]
+    # return return_data
+
+    # A note about dict.items()
+    # say dict is {"name": "beer", "abv": 5.0}
+    # then dict.items() is [("name", "beer"), ("abv", 5.0)]
 
     return {key: value for key, value in json.items() if key in ["name", "abv"]}
