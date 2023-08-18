@@ -1,27 +1,7 @@
 import pandas as pd
 import pytest
 
-from random_coding_challenge.adhoc_01 import cum_index_v1, cum_index_v2
-
-data_frame = (
-    pd.DataFrame(
-        {
-            "year": range(2016, 2024),
-            "rate_change": [
-                0.02,
-                0.01,
-                0.04,
-                0.03,
-                0.07,
-                0.02,
-                0.03,
-                0.05,
-            ],
-        }
-    )
-    .set_index("year")
-    .sort_index()
-)
+from random_coding_challenge.adhoc_01 import cum_index_v1, cum_index_v2, EXAMPLE_DATA
 
 expected = pd.Series(
     [
@@ -38,10 +18,10 @@ expected = pd.Series(
 
 
 def test_cum_index_v1():
-    actual = cum_index_v1(data_frame["rate_change"])
+    actual = cum_index_v1(EXAMPLE_DATA["rate_change"])
     assert pytest.approx(actual, abs=0.001) == expected
 
 
 def test_cum_index_v2():
-    actual = cum_index_v2(data_frame["rate_change"])
+    actual = cum_index_v2(EXAMPLE_DATA["rate_change"])
     assert pytest.approx(actual, abs=0.001) == expected
