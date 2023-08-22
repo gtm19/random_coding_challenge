@@ -44,21 +44,18 @@ matrix does not match the number of rows of the rate matrix), then the function 
 ValueError.
 
 ❗IMPORTANT❗: your solution CANNOT use the following:
-    - nested `for` loops
+    - nested `for`, `while`, or any other kinds of loops - you are better than this!
     - any imported functions/classes from numpy
 
 Jack has proposed that the forfeit for ignoring this directive is that you will have to live code
 the entirity of the 2023 Advent of Code dressed as the Grinch, and broadcast from the company 
 LinkedIn account.
 
-This challenge involves more complex mathematical operations using nested loops and conditional
-statements to calculate premiums based on risk factors and rates, similar to how insurance
-premiums are calculated in real life.
-
 The tests have already been written for you (see `tests/test_challenge_06.py`), you just need to
 write the functions. You can run `pytest -k challenge_06` in the terminal to see if your tests
 pass.
 """
+
 
 def calculate_premiums(risk_matrix: list, rate_matrix: list) -> list:
     pass
