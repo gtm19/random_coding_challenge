@@ -53,7 +53,7 @@ def cum_index_v2(iterable: Iterable) -> pd.Series:
 
 
 def rolling_multiply(x1: Sequence, x2: Sequence, truncate: bool = False) -> Iterable:
-    return_list = np.convolve(x1, x2, mode="full")
+    return_list = np.correlate(x1, x2, "full")[::-1]
     if truncate:
         return return_list[: len(x2)]
     return return_list

@@ -304,4 +304,10 @@ class RollingMultiply:
             ],
             "truncate": True,
         },
+        {
+            "x1": [1, 2],
+            "x2": [3, 4],
+            "expected": [6, 11, 4],
+            "truncate": False,
+        },
     ]

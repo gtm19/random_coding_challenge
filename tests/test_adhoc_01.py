@@ -80,6 +80,6 @@ def test_cum_index_v2(dictionary):
 @pytest.mark.parametrize("dictionary", RollingMultiply.data)
 def test_rolling_multiply(dictionary):
     actual = rolling_multiply(
-        dictionary["x1"], dictionary["x2"], dictionary["truncate"]
+        dictionary["x1"], dictionary["x2"], dictionary.get("truncate", False)
     )
     assert pytest.approx(list(actual), abs=0.001) == dictionary["expected"]
