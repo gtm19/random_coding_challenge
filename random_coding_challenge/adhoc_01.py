@@ -1,5 +1,6 @@
-from typing import Iterable
+from typing import Sequence, Iterable
 import pandas as pd
+import numpy as np
 
 EXAMPLE_DATA = (
     pd.DataFrame(
@@ -49,6 +50,14 @@ def cum_index_v2(iterable: Iterable) -> pd.Series:
     series = series.cumprod()
     # reverse the series again and return it
     return series[::-1]
+
+
+def rolling_multiply(x1: Sequence, x2: Sequence, truncate: bool = False) -> Iterable:
+    out_length = len(x2)
+    if not truncate:
+        out_length += len(x1) - 1
+    padded_x2 = np.pad(x2, (len(x1) - 1, len(x1) - 1), "constant", constant_values=0)
+    return [np.dot(x1, padded_x2[i : i + len(x1)]) for i in range(out_length)]
 
 
 if __name__ == "__main__":

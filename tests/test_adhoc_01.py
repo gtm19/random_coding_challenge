@@ -1,7 +1,14 @@
 import pandas as pd
 import pytest
 
-from random_coding_challenge.adhoc_01 import cum_index_v1, cum_index_v2, EXAMPLE_DATA
+from .data import RollingMultiply
+
+from random_coding_challenge.adhoc_01 import (
+    cum_index_v1,
+    cum_index_v2,
+    EXAMPLE_DATA,
+    rolling_multiply,
+)
 
 input_2 = (
     pd.DataFrame(
@@ -67,3 +74,12 @@ def test_cum_index_v1(dictionary):
 def test_cum_index_v2(dictionary):
     actual = cum_index_v2(dictionary["input"]["rate_change"])
     assert pytest.approx(actual, abs=0.001) == dictionary["expected"]
+
+
+# rolling multiply tests
+@pytest.mark.parametrize("dictionary", RollingMultiply.data)
+def test_rolling_multiply(dictionary):
+    actual = rolling_multiply(
+        dictionary["x1"], dictionary["x2"], dictionary["truncate"]
+    )
+    assert pytest.approx(list(actual), abs=0.001) == dictionary["expected"]
