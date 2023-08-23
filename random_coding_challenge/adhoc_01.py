@@ -53,11 +53,10 @@ def cum_index_v2(iterable: Iterable) -> pd.Series:
 
 
 def rolling_multiply(x1: Sequence, x2: Sequence, truncate: bool = False) -> Iterable:
-    out_length = len(x2)
-    if not truncate:
-        out_length += len(x1) - 1
-    padded_x2 = np.pad(x2, (len(x1) - 1, len(x1) - 1), "constant", constant_values=0)
-    return [np.dot(x1, padded_x2[i : i + len(x1)]) for i in range(out_length)]
+    return_list = np.convolve(x1, x2, mode="full")
+    if truncate:
+        return return_list[: len(x2)]
+    return return_list
 
 
 if __name__ == "__main__":
