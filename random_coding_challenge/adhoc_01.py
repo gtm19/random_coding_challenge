@@ -32,7 +32,7 @@ def cum_index_v1(iterable: Iterable) -> pd.Series:
     # cumulatively multiply
     series = series.cumprod()
     # "invert" the series by dividing the max by each value
-    return series.max() / series
+    return series.iat[-1] / series
 
 
 def cum_index_v2(iterable: Iterable) -> pd.Series:
