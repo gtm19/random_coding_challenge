@@ -58,4 +58,17 @@ pass.
 
 
 def calculate_premiums(risk_matrix: list, rate_matrix: list) -> list:
-    pass
+    if any(len(row) != len(risk_matrix[0]) for row in risk_matrix):
+        raise ValueError("Risk matrix rows are not of equal length.")
+    if any(len(row) != len(rate_matrix[0]) for row in rate_matrix):
+        raise ValueError("Rate matrix rows are not of equal length.")
+    if len(risk_matrix[0]) != len(rate_matrix):
+        raise ValueError("Matrix dimensions are incompatible for premium calculation.")
+
+    return [
+        [
+            sum(risk * rate for risk, rate in zip(risk_row, rate_col))
+            for rate_col in zip(*rate_matrix)
+        ]
+        for risk_row in risk_matrix
+    ]
